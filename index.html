@@ -25,11 +25,16 @@
 
 			function nbr() { 
 				if (confirm('tu veux mettre un nombre ?')) {
-					a = parseInt(prompt("tu veux mettre quoi comme nombre ?"))
+					a = (prompt("tu veux mettre quoi comme nombre ?"))
+					if (a === null) {
+						a = 'rien car tu as refusé au début !'
+						document.getElementById('a').textContent = a;
+					}
 					if (isNaN(a)) {
 						alert("ce n'est pas un nombre !")
 						nbr()
 					} else {
+						a = parseInt(a)
 						document.getElementById('a').textContent = a;
 					}
 				} else {
