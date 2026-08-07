@@ -6,6 +6,7 @@
 		<title>SiteDeLaMortQuiTue</title>
 		<script>
 			let a = ''
+			let compteur = 0
 			function nbr() { 
 				if (confirm('tu veux mettre un nombre ?')) {
 					a = parseInt(prompt("tu veux mettre quoi comme nombre ?"))
@@ -18,6 +19,13 @@
 				} else {
 					a = 'rien car tu as refusé au début !'
 					document.getElementById('a').textContent = a;
+				}
+			}
+			function btnclick() {
+				compteur = compteur + 1
+				document.getElementById('btn').textContent = compteur;
+				if (document.getElementById('btn-checkbox').checked) {
+					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
 				}
 			}
 		</script>
@@ -38,11 +46,14 @@
 		</style>
 	</head>
 	<body onload="nbr()">
-		<h1>bienvenue sur le site la la mort qui tue pas !</h1>
+		<h1>bienvenue sur le site la mort qui tue pas !</h1>
 		<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
-		<button onclick="alert('BOUTONNNNN')">
+		<label>
+			<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
+		</label>
+		<button onclick="btnclick()">
 			<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
 		</button>
-		<p><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
+		<p>nombre de clicks : <span id="btn"></span><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
 	</body>
 </html>
