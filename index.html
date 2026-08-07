@@ -5,11 +5,19 @@
 		<title>SiteDeLaMortQuiTue</title>
 		<script>
 			let a = ''
-			if (confirm('OK ?')) {
-				a = 'tu as dit ok au début !'
-			} else {
-				a = 'tu as refusé au début !'
+			function nbr() {
+				if (confirm('tu veux mettre un nombre ?')) {
+					a = ParseInt(prompt("tu veux mettre quoi comme nombre ?"))
+						if (isNaN(a)) {
+							alert("ce n'est pas un nombre !")
+							nbr()
+						}
+				} else {
+					a = 'tu as refusé au début !'
+				}
 			}
+			nbr()
+			document.getElementById('mon-texte').textContent = a;
 		</script>
 	</head>
 	<body>
@@ -18,5 +26,6 @@
 		<button onclick="alert(a)">
 			<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
 		</button>
+		<p><b>ps</b> : ton nombre c'est <b><span id="mon-texte"></b></p>
 	</body>
 </html>
