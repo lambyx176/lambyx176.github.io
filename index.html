@@ -7,6 +7,21 @@
 		<script>
 			let a = ''
 			let compteur = 0
+
+			const succesList = [
+				{ seuil: 0, texte: "aucun pour l'instant" },
+				{ seuil: 1, texte: "bouton novice" },
+				{ seuil: 10,  texte: "Débutant du bouton" },
+				{ seuil: 25, texte: "boutonneur du quartier" },
+				{ seuil: 50, texte: "Tu n'as vraiment rien d'autre à faire ?" },
+				{ seuil: 67, texte: "non je ne vais pas le faire !" },
+				{ seuil: 100, texte: "bouton amélioré" },
+				{ seuil: 250, texte: "tu n'as SÉRIEUSEMENT rien d'autre a faire ?" },
+				{ seuil: 404, texte: "404 pas trouvé" },
+				{ seuil: 413, texte: "erreur 413, je suis une théière" },
+				{ seuil: 500, texte: "bouton de bronze" },
+				{ seuil: 666, texte: "O_O" }
+			];
 			function nbr() { 
 				if (confirm('tu veux mettre un nombre ?')) {
 					a = parseInt(prompt("tu veux mettre quoi comme nombre ?"))
@@ -26,6 +41,11 @@
 				document.getElementById('btn').textContent = compteur;
 				if (document.getElementById('btn-checkbox').checked) {
 					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
+				}
+				for (let s of succesList) {
+					if compteur == s.seuil {
+						document.getElementById('badge').textContent = s.texte;
+					}
 				}
 			}
 		</script>
@@ -57,6 +77,6 @@
 		<button onclick="btnclick()">
 			<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
 		</button>
-		<p>nombre de clicks : <span id="btn"></span><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
+		<p>nombre de clicks : <span id="btn"></span><br>Badge actuel : <b id="badge"></b><br><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
 	</body>
 </html>
