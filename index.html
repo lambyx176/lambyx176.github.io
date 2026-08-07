@@ -50,6 +50,26 @@
 			}
 		</script>
 		<style>
+			.page-container {
+				display: flex;
+  				flex-direction: row; /* Côte à côte sur PC */
+			    gap: 30px;
+			    align-items: stretch;
+  				min-height: 80vh;
+			}
+			.contenu {
+				flex: 1;
+			}
+			.fenetre {
+				width: 300px; /* Largeur de la fenêtre sur PC */
+				background: linear-gradient(to bottom, #70baff, #cce7ff); /* Gradient de ciel bleu */
+				border: 10px solid #ffffff; /* Cadre de fenêtre blanc (ou marron si tu préfères) */
+				border-radius: 12px;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+				display: flex;justify-content: center;
+				align-items: center;
+				font-size: 3rem;
+				min-height: 350px;
 			body {
 				background-color: #1a1a1a;
 				color: #eeeeee;
@@ -66,17 +86,35 @@
 			label {
 				display: block;
 			}
+				@media (max-width: 768px) {
+					.page-container {
+						flex-direction: column; /* Empile de haut en bas */
+					}
+					.fenetre {
+						width: 100%; /* Prend toute la largeur sur téléphone */
+						height: 250px;
+					}
 		</style>
 	</head>
 	<body onload="nbr(); document.getElementById('btn').textContent = compteur; document.getElementById('badge').textContent = s.texte;">
-		<h1>bienvenue sur le site la mort qui tue pas !</h1>
-		<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
-		<label>
-			<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
-		</label>
-		<button onclick="btnclick()">
-			<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
-		</button>
-		<p>nombre de clicks : <span id="btn"></span><br>Badge actuel : <b id="badge"></b><br><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
+		
+		<div class=page-container>
+
+			<div class=contenu>
+				
+				<h1>bienvenue sur le site la mort qui tue pas !</h1>
+				<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
+				<label>
+					<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
+				</label>
+				<button onclick="btnclick()">
+					<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
+				</button>
+				<p>nombre de clicks : <span id="btn"></span><br>Badge actuel : <b id="badge"></b><br><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
+
+			</div>
+			<div class=fenetre>
+			</div>
+		</div>
 	</body>
 </html>
