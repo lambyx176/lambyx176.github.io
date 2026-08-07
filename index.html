@@ -11,7 +11,7 @@
 			const succesList = [
 				{ seuil: 0, texte: "aucun pour l'instant" },
 				{ seuil: 1, texte: "bouton novice" },
-				{ seuil: 10,  texte: "Débutant du bouton" },
+				{ seuil: 10, texte: "Débutant du bouton" },
 				{ seuil: 25, texte: "boutonneur du quartier" },
 				{ seuil: 50, texte: "Tu n'as vraiment rien d'autre à faire ?" },
 				{ seuil: 67, texte: "non je ne vais pas le faire !" },
@@ -22,26 +22,30 @@
 				{ seuil: 500, texte: "bouton de bronze" },
 				{ seuil: 666, texte: "O_O" }
 			];
+
 			function nbr() { 
 				if (confirm('tu veux mettre un nombre ?')) {
 					a = parseInt(prompt("tu veux mettre quoi comme nombre ?"))
-						if (isNaN(a)) {
-							alert("ce n'est pas un nombre !")
-							nbr()
-						} else {
-							document.getElementById('a').textContent = a;
-						}
+					if (isNaN(a)) {
+						alert("ce n'est pas un nombre !")
+						nbr()
+					} else {
+						document.getElementById('a').textContent = a;
+					}
 				} else {
 					a = 'rien car tu as refusé au début !'
 					document.getElementById('a').textContent = a;
 				}
 			}
+
 			function btnclick() {
 				compteur = compteur + 1
 				document.getElementById('btn').textContent = compteur;
+
 				if (document.getElementById('btn-checkbox').checked) {
 					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
 				}
+
 				for (let s of succesList) {
 					if (compteur === s.seuil) {
 						document.getElementById('badge').textContent = s.texte;
@@ -50,61 +54,89 @@
 			}
 		</script>
 		<style>
-			}
-			.contenu {
-				flex: 1;
-			}
-			.fenetre {
-				width: 300px; /* Largeur de la fenêtre sur PC */
-				background: linear-gradient(to bottom, #70baff, #cce7ff); /* Gradient de ciel bleu */
-				border: 10px solid #ffffff; /* Cadre de fenêtre blanc (ou marron si tu préfères) */
-				border-radius: 12px;
-				box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-				display: flex;justify-content: center;
-				align-items: center;
-				font-size: 3rem;
-				min-height: 350px;
+			/* Ton fond sombre et ton texte clair restaurés */
 			body {
 				background-color: #1a1a1a;
 				color: #eeeeee;
+				margin: 20px;
+				font-family: sans-serif;
 			}
+
 			h1 {
 				color: #ffffff;
 				text-align: center;
 			}
+
+			/* Ton bouton avec sa bordure rouge de 10px restauré */
 			button {
 				border-style: solid;
 				border-width: 10px;
 				border-color: #ff0000;
+				background: transparent;
+				cursor: pointer;
 			}
+
 			label {
 				display: block;
+				margin-bottom: 10px;
 			}
-				@media (max-width: 768px) {
-					.page-container {
-						flex-direction: column; /* Empile de haut en bas */
-					}
-					.fenetre {
-						width: 100%; /* Prend toute la largeur sur téléphone */
-						height: 250px;
-					}
+
+			/* Disposition globale : Cote a cote sur PC, superpose sur petit ecran */
+			.page-layout {
+				display: flex;
+				flex-wrap: wrap; /* Permet de passer en dessous sur mobile */
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 20px;
+			}
+
+			.zone-gauche {
+				flex: 1;
+				min-width: 280px; /* S'assure que le contenu ne soit pas trop ecrase */
+			}
+
+			/* La fenetre a droite */
+			.fenetre-droite {
+				width: 220px;
+				height: 300px;
+				background: linear-gradient(to bottom, #3a7bd5, #3a6073);
+				border: 8px solid #ffffff;
+				border-radius: 8px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 2rem;
+				box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+			}
 		</style>
 	</head>
-	<body onload="nbr(); document.getElementById('btn').textContent = compteur; document.getElementById('badge').textContent = s.texte;">
-		<div class=contenu>
-			
-			<h1>bienvenue sur le site la mort qui tue pas !</h1>
-			<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
-			<label>
-				<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
-			</label>
-			<button onclick="btnclick()">
-				<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
-			</button>
-			<p>nombre de clicks : <span id="btn"></span><br>Badge actuel : <b id="badge"></b><br><br><b>ps</b> : ton nombre c'est <b><span id="a"></span></b></p>
+	<body onload="nbr(); document.getElementById('btn').textContent = compteur;">
+		<h1>bienvenue sur le site la mort qui tue pas !</h1>
+		
+		<div class="page-layout">
+			<!-- COTE GAUCHE : Tout ton code d'origine -->
+			<div class="zone-gauche">
+				<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
+				
+				<label>
+					<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
+				</label>
+				
+				<button onclick="btnclick()">
+					<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
+				</button>
+				
+				<p>
+					nombre de clicks : <span id="btn"></span><br>
+					Badge actuel : <b id="badge">aucun pour l'instant</b><br><br>
+					<b>ps</b> : ton nombre c'est <b><span id="a"></span></b>
+				</p>
+			</div>
 
-		</div>
-		<div class=fenetre>
+			<!-- COTE DROIT : La fenetre -->
+			<div class="fenetre-droite">
+				☀️ ☁️
+			</div>
 		</div>
 	</body>
 </html>
