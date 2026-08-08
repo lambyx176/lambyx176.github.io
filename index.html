@@ -23,40 +23,57 @@
 				{ seuil: 666, texte: "O_O" }
 			];
 
-			function nbr() { 
+			function nbr() {
 				if (confirm('tu veux mettre un nombre ?')) {
 					a = (prompt("tu veux mettre quoi comme nombre ?"))
-					if (a === '') {
+					if (a === null || a === '' ) {
 						a = 'rien car tu as refusé au début !'
 						document.getElementById('a').textContent = a;
-					}
-					if (isNaN(a)) {
-						alert("ce n'est pas un nombre !")
-						nbr()
 					} else {
-						a = parseInt(a)
-						document.getElementById('a').textContent = a;
+						if (isNaN(a)) {
+							alert("c'est pas un nombre !")
+							nbr()
+						} else {
+							a = parseInt(a)
+							document.getElementById('a').textContent = a;
+						}
 					}
 				} else {
 					a = 'rien car tu as refusé au début !'
 					document.getElementById('a').textContent = a;
 				}
+				localStorage.setItem('a', a)
 			}
 
 			function btnclick() {
 				compteur = compteur + 1
 				document.getElementById('btn').textContent = compteur;
-
-				if (document.getElementById('btn-checkbox').checked) {
+				MàJBadge()
+				localStorage.setItem('compteur', compteur)
+				if (!document.getElementById('btn-checkbox').checked) {
 					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
 				}
-
+			}
+			function MàJBadge() {
 				for (let s of succesList) {
 					if (compteur === s.seuil) {
 						document.getElementById('badge').textContent = s.texte;
 					}
 				}
 			}
+			function demarage() {
+				//initialisation du bios avec le fichier 1.543ko
+				let LSa = localStorage.getItem('a')
+				if ( LSa !== null ) {
+					a = LSa
+					document.getElementById('a').textContent = a;
+				} else { nbr() }
+
+				let LSc = localStorage.getItem('compteur')
+				if ( LSc !== null ) {
+					compteur = parseInt(LSc)
+					document.getElementById('btn').textContent = compteur;
+				} MàJBadge() }
 		</script>
 		<style>
 			/* Ton fond sombre et ton texte clair restaurés */
@@ -114,8 +131,8 @@
 			}
 		</style>
 	</head>
-	<body onload="nbr(); document.getElementById('btn').textContent = compteur;">
-		<h1>bienvenue sur le site la mort qui tue pas !</h1>
+	<body onload="demarage()">
+		<h1>bienvenue sur le site de la mort qui tue pas !</h1>
 		
 		<div class="page-layout">
 			<!-- COTE GAUCHE : Tout ton code d'origine -->
@@ -123,7 +140,7 @@
 				<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
 				
 				<label>
-					<input type="checkbox" id="btn-checkbox" checked> Activer le BOUTONNNNN 
+					<input type="checkbox" id="btn-checkbox" checked> desactiver le BOUTONNNNN 
 				</label>
 				
 				<button onclick="btnclick()">
@@ -139,7 +156,8 @@
 
 			<!-- COTE DROIT : La fenetre -->
 			<div class="fenetre-droite">
-				☀️ ☁️
+				☀️
+				<button onclick="localStorage.clear(); location.reload();"☁️
 			</div>
 		</div>
 	</body>
