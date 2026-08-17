@@ -46,6 +46,7 @@
 			}
 
 			function btnclick() {
+				document.getElementById("btn1").style.borderStyle = "inset"
 				compteur = compteur + 1
 				document.getElementById('btn').textContent = compteur;
 				MàJBadge()
@@ -53,10 +54,11 @@
 				if (!document.getElementById('btn-checkbox').checked) {
 					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
 				}
+				document.getElementById("btn1").style.borderStyle = "outset"
 			}
 			function MàJBadge() {
 				for (let s of succesList) {
-					if (compteur === s.seuil) {
+					if (compteur >= s.seuil && compteur <= s[ s + 1 ].seuil) {
 						document.getElementById('badge').textContent = s.texte;
 					}
 				}
@@ -89,7 +91,7 @@
 			}
 
 			/* Ton bouton avec sa bordure rouge de 10px restauré */
-			button {
+			#btn1 {
 				border-style: solid;
 				border-width: 10px;
 				border-color: #ff0000;
@@ -129,6 +131,10 @@
 				font-size: 2rem;
 				box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 			}
+			#btnReni {
+				background-color : #aaaaaa;
+				border : 5px solid #ff1a1a;
+			}
 		</style>
 	</head>
 	<body onload="demarage()">
@@ -143,7 +149,7 @@
 					<input type="checkbox" id="btn-checkbox" checked> desactiver le BOUTONNNNN 
 				</label>
 				
-				<button onclick="btnclick()">
+				<button id="btn1" onclick="btnclick()">
 					<img src="https://img.freepik.com/psd-premium/bouton-rectangle_982911-27134.jpg?semt=ais_hybrid" style="height: 100px; width: auto;">
 				</button>
 				
@@ -157,7 +163,7 @@
 			<!-- COTE DROIT : La fenetre -->
 			<div class="fenetre-droite">
 				☁️☁️🌥️☁️
-				<button onclick="localStorage.clear(); location.reload();">rénitialiser</button>
+				<button id="btnReni", onclick="localStorage.clear(); location.reload();">rénitialiser</button>
 			</div>
 		</div>
 	</body>
