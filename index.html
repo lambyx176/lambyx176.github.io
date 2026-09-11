@@ -46,15 +46,13 @@
 			}
 
 			function btnclick() {
-				document.getElementById("btn1").style.borderStyle = "inset"
 				compteur = compteur + 1
 				document.getElementById('btn').textContent = compteur;
 				MàJBadge()
 				localStorage.setItem('compteur', compteur)
 				if (!document.getElementById('btn-checkbox').checked) {
-					alert("BOUTONNNNNNNNNNNNNNNNNNNNNNN")
+					alert("BOUTONNNNNNNNNNNNN")
 				}
-				document.getElementById("btn1").style.borderStyle = "outset"
 			}
 			function MàJBadge() {
 				for (let i = 0; i < succesList.length; i++) {
