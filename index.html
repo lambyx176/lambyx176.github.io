@@ -61,7 +61,7 @@
         			let s = succesList[i];
         			let nextSeuil = i + 1 < succesList.length ? succesList[i + 1].seuil : Infinity;
         			if (compteur >= s.seuil && compteur < nextSeuil) {
-            			document.getElementById('badge').textContent = s.texte;
+            			document.getElementById('badge').textContent = s.seuil ": " s.texte;
 					}
 				}
 			}
