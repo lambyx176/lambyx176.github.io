@@ -125,6 +125,11 @@
 				min-width: 280px; /* S'assure que le contenu ne soit pas trop ecrase */
 			}
 
+			.partie-droite {
+				display: flex;
+				gap: 15px;
+				flex-direction: column;
+				align-items: center;
 			/* La fenetre a droite */
 			.fenetre-droite {
 				width: 400px;
@@ -172,9 +177,13 @@
 			</div>
 
 			<!-- COTE DROIT : La fenetre -->
-			<div class="fenetre-droite">
-				☁️☁️🌥️☁️
+			<div class="partie-droite">
+				<div class="fenetre-droite">
+					☁️☁️🌥️☁️
+				</div>
+			
 				<button class="btnreni" onclick="localStorage.clear(); location.reload();">rénitialiser</button>
+
 			</div>
 		</div>
 	</body>
