@@ -65,7 +65,7 @@
 			}
 			function demarage() {
 				//initialisation du bios avec le fichier 1.543ko
-				if (localStorage.getItem("case")) === null {
+				if (localStorage.getItem("case") === null) {
 					localStorage.setItem("case", false)
 				}
 				let LSa = localStorage.getItem('a')
@@ -79,7 +79,7 @@
 					compteur = parseInt(LSc)
 					document.getElementById('btn').textContent = compteur;
 				} MàJBadge()
-				document.GetElementById("btn-checkbox").checked = localStorage.getItem("case")
+				document.getElementById("btn-checkbox").checked = localStorage.getItem("case")
 			}
 			function btnckbxclick() {
 				if (localStorage.getItem("case")) {
