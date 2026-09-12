@@ -82,7 +82,7 @@
 				document.getElementById("btn-checkbox").checked = localStorage.getItem("case")
 			}
 			function btnckbxclick() {
-				if (localStorage.getItem("case")) {
+				if (localStorage.getItem("case") === "true") {
 					localStorage.setItem("case", false)
 				} else {
 					localStorage.setItem("case", true)
