@@ -79,7 +79,10 @@
 					compteur = parseInt(LSc)
 					document.getElementById('btn').textContent = compteur;
 				} MàJBadge()
-				document.getElementById("btn-checkbox").checked = localStorage.getItem("case")
+				if (localStorage.getItem("case") === "true") {
+					document.getElementById("btn-checkbox").checked = true;
+				} else {
+					document.getElementById("btn-checkbox").checked = false;
 			}
 			function btnckbxclick() {
 				if (localStorage.getItem("case") === "true") {
