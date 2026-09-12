@@ -65,6 +65,9 @@
 			}
 			function demarage() {
 				//initialisation du bios avec le fichier 1.543ko
+				if (localStorage.getItem("case")) === null {
+					localStorage.setItem("case", false)
+				}
 				let LSa = localStorage.getItem('a')
 				if ( LSa !== null ) {
 					a = LSa
@@ -75,7 +78,16 @@
 				if ( LSc !== null ) {
 					compteur = parseInt(LSc)
 					document.getElementById('btn').textContent = compteur;
-				} MàJBadge() }
+				} MàJBadge()
+				document.GetElementById("btn-checkbox").checked = localStorage.getItem("case")
+			}
+			function btnckbxclick() {
+				if (localStorage.getItem("case")) {
+					localStorage.setItem("case", false)
+				} else {
+					localStorage.setItem("case", true)
+				}
+			}
 		</script>
 		<style>
 			/* Ton fond sombre et ton texte clair restaurés */
@@ -130,6 +142,7 @@
 				gap: 15px;
 				flex-direction: column;
 				align-items: center;
+			}
 			/* La fenetre a droite */
 			.fenetre-droite {
 				width: 400px;
@@ -162,7 +175,7 @@
 				<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
 				
 				<label>
-					<input type="checkbox" id="btn-checkbox" checked> desactiver le BOUTONNNNN 
+					<input type="checkbox" id="btn-checkbox" onclick="btnckbxclick()"> desactiver le BOUTONNNNN 
 				</label>
 				
 				<button class="btn1" onclick="btnclick()">
