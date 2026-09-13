@@ -51,7 +51,7 @@
 				document.getElementById('btn').textContent = compteur;
 				MàJBadge()
 				localStorage.setItem('compteur', compteur)
-				if (!document.getElementById('btn-checkbox').checked) {
+				if (document.getElementById('btn-checkbox').checked) {
 					alert("BOUTONNNNNNNNNNNNN")
 				}
 			}
@@ -180,7 +180,7 @@
 				<p>le site est en cours de construction voila :)<br>sinon si vous vous ennuyez on a un boutons regardez : <br></p>
 				
 				<label>
-					<input type="checkbox" id="btn-checkbox" onclick="btnckbxclick()"> desactiver le BOUTONNNNN 
+					<input type="checkbox" id="btn-checkbox" onclick="btnckbxclick()"> activer le BOUTONNNNN 
 				</label>
 				
 				<button class="btn1" onclick="btnclick()">
