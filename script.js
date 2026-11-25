@@ -16,6 +16,13 @@
 				{ seuil: 666, texte: "O_O" }
 			];
 
+function verifierObjectifA() {
+	const cible = Number(a);
+	if (!Number.isNaN(cible) && cible > 0 && compteur === cible) {
+		alert("Objectif " + cible + " atteint !");
+	}
+}
+
 			function nbr() {
 				if (confirm('tu veux mettre un nombre ?')) {
 					a = (prompt("tu veux mettre quoi comme nombre ?"))
@@ -40,6 +47,7 @@
 
 			function btnclick() {
 				compteur = compteur + 1
+				verifierObjectifA()
 				document.getElementById('btn').textContent = compteur;
 				MàJBadge()
 				localStorage.setItem('compteur', compteur)
